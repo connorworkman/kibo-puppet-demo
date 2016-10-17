@@ -1,6 +1,6 @@
 class apache2{
     package {
-        "apache2": ensure => installed;
+        "httpd": ensure => installed;
             "php5-cgi": ensure => installed;
             "libapache2-mod-php5": ensure => installed;
             "libapache2-mod-gnutls": ensure => installed;

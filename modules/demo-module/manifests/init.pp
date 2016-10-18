@@ -11,14 +11,14 @@ class demo-module {
         file { 'puppet-demo.csv':
             ensure  => file,
             content => "hit if statement",
-            path    => '/home/ec2-user/puppet-demo.csv/',
+            path    => '/home/ec2-user/puppet-demo.csv',
         }
     } else {
         warning("This operating system is ${operatingsystem}.")
         file { 'puppet-demo2.csv':
             ensure  => file,
             content => "hit else statement",
-            path    => '/home/ec2-user/puppet-demo.csv/',
+            path    => '/home/ec2-user/puppet-demo2.csv',
         }
     }
 }

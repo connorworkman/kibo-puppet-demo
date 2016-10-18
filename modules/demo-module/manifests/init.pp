@@ -5,16 +5,20 @@ class demo-module {
         path    => '/home/ec2-user/puppet-demo.txt',
     }
     file { 'puppet-demo.csv':
-        if $operatingsystem == 'CentOS' {
-            warning("Your OS is ${operatingsystem}.")
+    }
+    if $operatingsystem == 'CentOS' {
+        warning("Your OS is ${operatingsystem}.")
+        file { 'puppet-demo.csv':
             ensure  => file,
             content => "hit if statement",
-            path    => '/home/ec2-user/puppet-demo.csv/'
-        } else {
-            warning("This operating system is ${operatingsystem}.")
+            path    => '/home/ec2-user/puppet-demo.csv/',
+        }
+    } else {
+        warning("This operating system is ${operatingsystem}.")
+        file { 'puppet-demo.csv':
             ensure  => file,
             content => "hit else statement",
-            path    => '/home/ec2-user/puppet-demo.csv/'
+            path    => '/home/ec2-user/puppet-demo.csv/',
         }
     }
 }

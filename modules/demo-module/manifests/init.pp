@@ -5,7 +5,7 @@ class demo-module {
         path    => '/home/ec2-user/puppet-demo.txt',
     }
     if $operatingsystem == 'CentOS' {
-        warning
+        warning("Your OS is ${operatingsystem}.")
     } else {
         warning("This operating system is ${operatingsystem}.")
     }

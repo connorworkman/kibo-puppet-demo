@@ -5,10 +5,10 @@ class demo-module {
         path    => '/home/ec2-user/puppet-demo.txt',
     }
     if $operatingsystem == 'Amazon' {
-        notify{"Your OS is ${operatingsystem}.":}
+        notify{"Your OS is ${operatingsystem}.":},
         $source = 'puppet:///modules/demo-module/puppet-demo2.csv',
     } else {
-        notify{"This operating system is ${operatingsystem}.":}
+        notify{"This operating system is ${operatingsystem}.":},
         notice("Your OS is definitely not Amazon.")
         $source = 'puppet:///modules/demo-module/puppet-demo.csv',
     }

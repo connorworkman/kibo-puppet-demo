@@ -1,4 +1,5 @@
 Open Source Puppet:
+    Allow inbound connections on port 8140 for the puppet master.
 
     Install puppet-server (puppet master on a node)
         yum install puppet-server (RHEL)

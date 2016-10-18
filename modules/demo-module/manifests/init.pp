@@ -15,7 +15,7 @@ class demo-module {
         }
     } else {
         warning("This operating system is ${operatingsystem}.")
-        file { 'puppet-demo.csv':
+        file { 'puppet-demo2.csv':
             ensure  => file,
             content => "hit else statement",
             path    => '/home/ec2-user/puppet-demo.csv/',

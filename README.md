@@ -1,4 +1,5 @@
-COMPLETED:
+Open Source Puppet:
+
     Install puppet-server (puppet master on a node)
         yum install puppet-server (RHEL)
 
@@ -16,14 +17,20 @@ COMPLETED:
     create /etc/puppet/manifests/site.pp and add node declarations
         Example, add host node as a managed node:
             node ip-*-*-*-* {
-                include httpd
+                include [class-name]
             }
     add a module to puppet config:
-        /etc/puppet/modules/[module-name]/manifests/init.pp
+        /etc/puppet/modules/[class-name]/manifests/init.pp
         Declare resources in the puppet DSL much like with chef cookbooks
+        ex:
+        class apache2 {
+            package {
+                "httpd": ensure => running,
+            }
+        }
 
-    start the master of puppets
-        service puppetmaster start
+    [re]start the master of puppets
+        service puppetmaster [re]start
 
 
 
@@ -31,4 +38,4 @@ COMPLETED:
 
 
 
-
+    

@@ -4,8 +4,6 @@ class demo-module {
         content => "This was created by Puppet Master version ${serverversion}.",
         path    => '/home/ec2-user/puppet-demo.txt',
     }
-    file { 'puppet-demo.csv':
-    }
     if $operatingsystem == 'CentOS' {
         warning("Your OS is ${operatingsystem}.")
         file { 'puppet-demo.csv':

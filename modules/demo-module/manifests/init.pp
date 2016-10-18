@@ -5,14 +5,16 @@ class demo-module {
         path    => '/home/ec2-user/puppet-demo.txt',
     }
     if $operatingsystem == 'CentOS' {
-        warning("Your OS is ${operatingsystem}.")
+        notify{"Your OS is ${operatingsystem}.":}
+        notice("Your OS is bad.")
         file { 'puppet-demo.csv':
             ensure  => file,
             content => "hit if statement",
             path    => '/home/ec2-user/puppet-demo.csv',
         }
     } else {
-        warning("This operating system is ${operatingsystem}.")
+        notify{"This operating system is ${operatingsystem}.":}
+        notice("Your OS is good.")
         file { 'puppet-demo2.csv':
             ensure  => file,
             content => "hit else statement",

@@ -1,5 +1,5 @@
 class apache2 {
-    package {
-        "httpd": ensure => installed;
+    package { "httpd": 
+        ensure => installed,
     }
 }

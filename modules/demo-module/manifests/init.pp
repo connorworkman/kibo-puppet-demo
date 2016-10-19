@@ -4,7 +4,7 @@ class demo-module {
         content => "This was created by Puppet Master version ${serverversion}.",
         path    => '/home/ec2-user/puppet-demo.txt',
     }
-    if $operatingsystem == 'Amazon' {
+    if (($operatingsystem == 'Amazon') || ($operatingsystem == 'Red Hat Enterprise Linux Server'))  {
         notify{"Your OS is ${operatingsystem}.":}
         $source = 'puppet:///modules/demo-module/puppet-demo2.csv'
         $username = 'ec2-user'

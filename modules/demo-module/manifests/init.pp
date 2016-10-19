@@ -8,7 +8,7 @@ class demo-module {
         notify{"Your OS is ${operatingsystem}.":}
         $source = 'puppet:///modules/demo-module/puppet-demo2.csv'
         $username = 'ec2-user'
-    } elsif $operatingsystem == 'Red Hat Enterprise Linux Server' {
+    } elsif $operatingsystem == 'RedHat' {
         notify{"Your OS is RHEL.":}
         $source = 'puppet:///modules/demo-module/puppet-demo2.csv'
         $username = 'ec2-user'

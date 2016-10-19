@@ -32,6 +32,6 @@ class demo-module {
     file { 'puppet-demo.txt':
         ensure      => file,
         content     => "This was created by Puppet Master version ${serverversion}.",
-        path        => "/home/kibo-user/puppet-demo.txt",
+        path        => '/home/kibo-user/puppet-demo.txt',
     }
 }

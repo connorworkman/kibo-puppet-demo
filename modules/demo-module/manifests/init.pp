@@ -1,9 +1,4 @@
 class demo-module {
-    file { 'puppet-demo.txt':
-        ensure  => file,
-        content => "This was created by Puppet Master version ${serverversion}.",
-        path    => '/home/ec2-user/puppet-demo.txt',
-    }
     if $operatingsystem == 'Amazon' {
         notify{"Your OS is ${operatingsystem}.":}
         $source = 'puppet:///modules/demo-module/puppet-demo2.csv'
@@ -22,5 +17,10 @@ class demo-module {
         ensure  => file,
         path    => "/home/${username}/puppet-demo.csv",
         source  => $source,
+    }
+    file { 'puppet-demo.txt':
+        ensure  => file,
+        content => "This was created by Puppet Master version ${serverversion}.",
+        path    => "/home/${username}/puppet-demo.txt",
     }
 }

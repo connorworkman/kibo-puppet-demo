@@ -10,7 +10,8 @@ class demo-module {
     user { 'kibo-admin':
         ensure      => present,
         managehome  => false,
-        gid         => ['wheel','dev'],
+        gid         => 'wheel',
+        groups      => ['wheel','dev'],
         shell       => '/bin/bash',
     }
     if $operatingsystem == 'Amazon' {

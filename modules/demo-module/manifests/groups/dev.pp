@@ -1,4 +1,4 @@
-class demo-modules::groups::dev {
+class demo-module::groups::dev {
     group { 'dev':
         ensure => present,
     }

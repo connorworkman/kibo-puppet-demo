@@ -2,7 +2,7 @@ class demo-module {
     #switch this if to case statement and continue on with linuxacademy tutorials
     user { 'kibo-dev':
         ensure      => present,
-        home        => '/home/kibo-user',
+        home        => '/home/kibo-dev',
         gid         => 'dev',
         shell       => '/bin/bash',
         managehome  => true,
@@ -26,12 +26,12 @@ class demo-module {
     }
     file { 'puppet-demo.csv':
         ensure      => file,
-        path        => "/home/kibo-user/puppet-demo.csv",
+        path        => '/home/kibo-dev/puppet-demo.csv',
         source      => $source,
     }
     file { 'puppet-demo.txt':
         ensure      => file,
         content     => "This was created by Puppet Master version ${serverversion}.",
-        path        => '/home/kibo-user/puppet-demo.txt',
+        path        => '/home/kibo-dev/puppet-demo.txt',
     }
 }

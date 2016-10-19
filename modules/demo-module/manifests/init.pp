@@ -7,14 +7,16 @@ class demo-module {
     if $operatingsystem == 'Amazon' {
         notify{"Your OS is ${operatingsystem}.":}
         $source = 'puppet:///modules/demo-module/puppet-demo2.csv'
+        $username = 'ec2-user'
     } else {
         notify{"This operating system is ${operatingsystem}.":}
         notice("Your OS is definitely not Amazon.")
         $source = 'puppet:///modules/demo-module/puppet-demo.csv'
+        $username = 'user'
     }
-        file { 'puppet-demo.csv':
-            ensure  => file,
-            path    => '/home/ec2-user/puppet-demo.csv',
-            source  => $source,
-        }
+    file { 'puppet-demo.csv':
+        ensure  => file,
+        path    => "/home/${username}/puppet-demo.csv",
+        source  => $source,
+    }
 }

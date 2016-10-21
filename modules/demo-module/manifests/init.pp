@@ -1,18 +1,18 @@
 class demo-module {
     #switch this if to case statement and continue on with linuxacademy tutorials
     user { 'kibo-dev':
-        ensure      => present,
-        home        => '/home/kibo-dev',
-        gid         => 'dev',
-        shell       => '/bin/bash',
-        managehome  => true,
+        ensure          => present,
+        home            => '/home/kibo-dev',
+        gid             => 'dev',
+        shell           => '/bin/bash',
+        managehome      => true,
     }
     user { 'kibo-admin':
-        ensure      => present,
-        managehome  => false,
-        gid         => 'wheel',
-        groups      => ['wheel','dev'],
-        shell       => '/bin/bash',
+        ensure          => present,
+        managehome      => false,
+        gid             => 'wheel',
+        groups          => ['wheel','dev'],
+        shell           => '/bin/bash',
     }
     if $operatingsystem == 'Amazon' {
         notify{"Your OS is ${operatingsystem}.":}
@@ -26,16 +26,22 @@ class demo-module {
         $source = 'puppet:///modules/demo-module/puppet-demo.csv'
     }
     file { 'puppet-demo.csv':
-        ensure      => file,
-        path        => '/home/kibo-dev/puppet-demo.csv',
-        source      => $source,
+        ensure          => file,
+        path            => '/home/kibo-dev/puppet-demo.csv',
+        source          => $source,
     }
     file { 'puppet-demo.txt':
-        ensure      => file,
-        content     => "This was created by Puppet Master version ${serverversion}.",
-        path        => '/home/kibo-dev/puppet-demo.txt',
+        ensure          => file,
+        content         => "This was created by Puppet Master version ${serverversion}.",
+        path            => '/home/kibo-dev/puppet-demo.txt',
     }
     file { '/home/kibo-dev/':
-        ensure      => directory,
+        ensure          => directory,
+    }
+    ec2_instance { 'launchedFromPuppetMaster':
+        ensure          => present,
+        region          => 'us-west-2',
+        image_id        => 'ami-b04e92d0',
+        instance_type   => 't2.micro',
     }
 }

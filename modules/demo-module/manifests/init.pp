@@ -38,10 +38,17 @@ class demo-module {
     file { '/home/kibo-dev/':
         ensure          => directory,
     }
-    ec2_instance { 'launchedFromPuppetMaster':
+    ec2_securitygroup { 'createdViaPuppetMaster':
         ensure          => present,
         region          => 'us-west-2',
-        image_id        => 'ami-b04e92d0',
-        instance_type   => 't2.micro',
+        description     => 'This sec group was launched from Puppet-AWS module on the puppet master.',
+        ingress         => [{
+            protocol    => 'tcp',
+            port        => 80,
+            cidr        => '0.0.0.0/0',
+        }],
+        tags            => {
+            my_tagname  => 'some_tag_value',
+        },
     }
 }
